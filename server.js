@@ -35,11 +35,10 @@ async function randomId() {
 
 app.get("/test", (req, res) => {
   const responseData = {
-    message:"Hello, GFG Learner",
-  articleData:{
-      articleName: "How to send JSON response from NodeJS",
-      category:"NodeJS",
-      status: "published"
+    userId:9,
+  userData:{
+      name: "Seemon",
+      age:24
   }}
   res.send(responseData)
 })
