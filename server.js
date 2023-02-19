@@ -34,7 +34,14 @@ async function randomId() {
 }
 
 app.get("/test", (req, res) => {
-  res.send("<h1>Twin working fine second 🤗</h1>")
+  const responseData = {
+    message:"Hello, GFG Learner",
+  articleData:{
+      articleName: "How to send JSON response from NodeJS",
+      category:"NodeJS",
+      status: "published"
+  }}
+  res.send(responseData)
 })
 
 app.get("/", async (req, res) => {
