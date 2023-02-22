@@ -37,7 +37,7 @@ app.get("/test", (req, res) => {
   const responseData = {
     userId:9,
   userData:{
-      name: "Seemon",
+      name: "Seemon one",
       age:24
   }}
   res.send(responseData)
