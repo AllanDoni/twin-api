@@ -1,4 +1,4 @@
-const Mongoose = require("Mongoose");
+// const Mongoose = require("Mongoose");
 const express = require("express");
 const mongoUrl = "http://ec2-65-1-85-153.ap-south-1.compute.amazonaws.com:27017";
 const app=express();
