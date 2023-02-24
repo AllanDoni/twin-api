@@ -21,7 +21,11 @@ app.get('/', (req, res) => {
 });
 
 app.get('/favicon.ico', (req, res) => {
-    res.sendFile(path.join(`${__dirname}/favicon.ico`));
+    response = {
+      message:"Hello, GFG Learner"
+    }
+    res.sendFile(response);
+    // res.sendFile(path.join(`${__dirname}/favicon.ico`));
 });
 
 app.get('/members', (req, res) => {
