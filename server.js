@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const mongoose = require('mongoose');
-// const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 
 // fetches root files from client/build
 //app.use(express.static(path.join(__dirname, 'client', 'build')));
