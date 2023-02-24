@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-app.get('/register', (req, res) => {
+app.post('/register', (req, res) => {
     response = {
       message:"Hello, GFG Learner"
     }
