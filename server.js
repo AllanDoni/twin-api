@@ -24,9 +24,14 @@ app.get('/favicon.ico', (req, res) => {
     response = {
       message:"Hello, GFG Learner"
     }
-    Member.insertOne({ firstName:"Allan", lastName:"Doni"})
+    const tenet = new Member({
+      firstName : "Tenet",
+      lastName: "Christopher Nolan"
+  })
+  
+  const result = tenet.save();
 
-    res.send(response);
+    res.send(result);
     // res.sendFile(path.join(`${__dirname}/favicon.ico`));
 });
 
