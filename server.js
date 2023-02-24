@@ -23,12 +23,11 @@ app.get('/', (req, res) => {
 });
 
 app.post('/register', (req, res) => {
-    response = {
-      message:"Hello, GFG Learner"
-    }
     const tenet = new Member({
       firstName : req.body.name,
-      lastName: "Christopher Nolan"
+      email:  req.body.email,
+      phoneNumber: req.body.email,
+      password: req.body.password
   })
   
   const result = tenet.save();
