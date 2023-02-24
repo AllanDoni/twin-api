@@ -15,7 +15,7 @@ const Schema = mongoose.Schema;
 const memberSchema = new Schema({
     firstName: String,
     lastName: String,
-    email: string
+    email: String
 });
 const Member = mongoose.model("member", memberSchema);
 
