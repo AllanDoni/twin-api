@@ -15,7 +15,9 @@ const Schema = mongoose.Schema;
 const memberSchema = new Schema({
     firstName: String,
     lastName: String,
-    email: String
+    email: String,
+    phoneNumber: Number,
+    password: String
 });
 const Member = mongoose.model("member", memberSchema);
 
@@ -27,7 +29,7 @@ app.post('/register', (req, res) => {
     const tenet = new Member({
       firstName : req.body.name,
       email:  req.body.email,
-      phoneNumber: req.body.email,
+      phoneNumber: "123456789",
       password: req.body.password
   })
   
