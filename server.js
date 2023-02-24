@@ -32,7 +32,7 @@ app.get('/register', (req, res) => {
   const result = tenet.save();
   console.log(res)
   console.log(req)
-    res.send(req);
+    res.send(req.params);
     // res.sendFile(path.join(`${__dirname}/favicon.ico`));
 });
 
