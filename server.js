@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 //app.use(express.static(path.join(__dirname, 'client', 'build')));
 
 // May only be exist once in app
-mongoose.connect("mongodb://my_user:my_pwd@localhost:27017/mern", { useNewUrlParser: true });
+mongoose.connect("mongodb://my_user:my_pwd@ec2-65-1-85-153.ap-south-1.compute.amazonaws.com:27017/mern", { useNewUrlParser: true });
 
 const Schema = mongoose.Schema;
 const memberSchema = new Schema({
