@@ -14,7 +14,8 @@ mongoose.connect("mongodb://my_user:my_pwd@ec2-65-1-85-153.ap-south-1.compute.am
 const Schema = mongoose.Schema;
 const memberSchema = new Schema({
     firstName: String,
-    lastName: String
+    lastName: String,
+    email: string
 });
 const Member = mongoose.model("member", memberSchema);
 
