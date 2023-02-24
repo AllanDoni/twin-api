@@ -1,67 +1,36 @@
-const express = require('express')
-const morgan = require('morgan')
-const mysql = require('mysql2')
+const express = require('express');
+const path = require('path');
+const app = express();
+const mongoose = require('mongoose');
 
-const app = express()
+// fetches root files from client/build
+//app.use(express.static(path.join(__dirname, 'client', 'build')));
 
-app.use(morgan(":method :url :status :res[content-length] - :response-time ms"))
+// May only be exist once in app
+mongoose.connect("mongodb://my_user:my_pwd@localhost:27017/mern", { useNewUrlParser: true });
 
-// https://gist.githubusercontent.com/meech-ward/1723b2df87eae8bb6382828fba649d64/raw/ee52637cc953df669d95bb4ab68ac2ad1a96cd9f/lotr.sql
-const pool = mysql.createPool({
-  host: process.env.MYSQL_HOST,
-  user: process.env.MYSQL_USER,
-  password: process.env.MYSQL_PASSWORD,
-  database: process.env.MYSQL_DATABASE,
-})
+const Schema = mongoose.Schema;
+const memberSchema = new Schema({
+    firstName: String,
+    lastName: String
+});
+const Member = mongoose.model("member", memberSchema);
 
-function getRandomInt(max) {
-  return 1 + Math.floor(Math.random() * (max-1))
-}
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
-async function getCharacter(id) {
-  const [characters] = await pool.promise().query("SELECT * FROM characters WHERE id = ?", [
-    id,
-  ])
-  return characters[0]
-}
-async function randomId() {
-  const [rows] = await pool.promise().query(
-    "SELECT COUNT(*) as totalCharacters FROM characters"
-  )
-  const { totalCharacters } = rows[0]
-  const randomId = getRandomInt(totalCharacters)
-  return randomId
-}
+app.get('/favicon.ico', (req, res) => {
+    res.sendFile(path.join(`${__dirname}/favicon.ico`));
+});
 
-app.get("/test", (req, res) => {
-  const responseData = {
-    userId:9,
-  userData:{
-      name: "Seemon one",
-      age:24
-  }}
-  res.send(responseData)
-})
-
-app.get("/", async (req, res) => {
-  try {
-    const id = await randomId()
-    const character = await getCharacter(id)
-    res.send(character)
-  } catch (error) {
-    res.send(error)
-  }
-})
-
-app.get("/:id", async (req, res) => {
-  try {
-    const id = parseInt(req.params.id) || await randomId()
-    const character = await getCharacter(id)
-    res.send(character)
-  } catch (error) {
-    res.send(error)
-  }
-})
-
-const port = process.env.PORT || 8080
-app.listen(port, () => console.log(`Listening on port ${port}`))
+app.get('/members', (req, res) => {
+    Member.find({}, "firstName lastName").then(members => {
+        if (members !== null && members.length > 0) {
+            res.write(JSON.stringify(members));
+        } else {
+            res.write("No members found");
+        }
+        res.end();
+    });
+}).listen(8000);
