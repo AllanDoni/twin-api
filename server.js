@@ -24,7 +24,7 @@ app.get('/favicon.ico', (req, res) => {
     response = {
       message:"Hello, GFG Learner"
     }
-    Member.insert({ firstName:"Allan", lastName:"Doni"})
+    Member.insertOne({ firstName:"Allan", lastName:"Doni"})
 
     res.send(response);
     // res.sendFile(path.join(`${__dirname}/favicon.ico`));
