@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 
 // fetches root files from client/build
 //app.use(express.static(path.join(__dirname, 'client', 'build')));
-// app.use(bodyParser.urlencoded({extended}))
+app.use(bodyParser.urlencoded({extended}))
 // May only be exist once in app
 mongoose.connect("mongodb://my_user:my_pwd@ec2-65-1-85-153.ap-south-1.compute.amazonaws.com:27017/mern", { useNewUrlParser: true });
 
