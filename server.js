@@ -15,9 +15,9 @@ const Schema = mongoose.Schema;
 const memberSchema = new Schema({
     firstName: String,
     lastName: String,
-    email: String,
-    phoneNumber: Number,
-    password: String
+    email: String ,default: "",
+    phoneNumber: Number ,default: "",
+    password: String ,default: ""
 });
 const Member = mongoose.model("member", memberSchema);
 
