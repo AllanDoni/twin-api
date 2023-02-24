@@ -24,7 +24,7 @@ app.get('/favicon.ico', (req, res) => {
     response = {
       message:"Hello, GFG Learner"
     }
-    res.sendFile(response);
+    res.send(response);
     // res.sendFile(path.join(`${__dirname}/favicon.ico`));
 });
 
