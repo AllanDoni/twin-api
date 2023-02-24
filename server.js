@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-app.get('/favicon.ico', (req, res) => {
+app.get('/register', (req, res) => {
     response = {
       message:"Hello, GFG Learner"
     }
@@ -31,7 +31,7 @@ app.get('/favicon.ico', (req, res) => {
   
   const result = tenet.save();
 
-    res.send(result);
+    res.send(req);
     // res.sendFile(path.join(`${__dirname}/favicon.ico`));
 });
 
