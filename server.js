@@ -13,11 +13,11 @@ mongoose.connect("mongodb://my_user:my_pwd@ec2-65-1-85-153.ap-south-1.compute.am
 
 const Schema = mongoose.Schema;
 const memberSchema = new Schema({
-    firstName: String,
-    lastName: String,
-    email: String ,default: "",
-    phoneNumber: Number ,default: "",
-    password: String ,default: ""
+    firstName: {type: String , default: ""},
+    lastName: {type: String , default: ""},
+    email: {type: String , default: ""},
+    phoneNumber: {type: Number , default: ""},
+    password: {type: String , default: ""}
 });
 const Member = mongoose.model("member", memberSchema);
 
