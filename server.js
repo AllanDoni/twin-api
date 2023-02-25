@@ -34,18 +34,17 @@ app.post('/register', (req, res) => {
               message = "user exists";
               console.log(message)
           } else {
-              message= "user doesn't exist";
-              console.log(message)
+            const tenet = new Users({
+                name : req.body.name,
+                phoneNumber: req.body.phoneNumber,
+                password: req.body.password
+            })
+            message = "Registered Successfully";
+            const result = tenet.save();
           }
           res.send({message: message});
     });
-    const tenet = new Users({
-      name : req.body.name,
-      phoneNumber: req.body.phoneNumber,
-      password: req.body.password
-  })
-  
-  const result = tenet.save();
+    
   console.log(res)
   console.log(req)
     // res.send(existingUser);
