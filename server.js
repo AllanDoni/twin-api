@@ -26,9 +26,9 @@ app.get('/', (req, res) => {
 
 app.post('/register', (req, res) => {
     if(isNaN(req.body.email)){
-        let email = req.body.email;
+        email = req.body.email;
     } else {
-        let phoneNumber = req.body.email;
+        phoneNumber = req.body.email;
     }
     const tenet = new Users({
       name : req.body.name,
