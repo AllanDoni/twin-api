@@ -19,14 +19,14 @@ const memberSchema = new Schema({
     phoneNumber: {type: Number , default: ""},
     password: {type: String , default: ""}
 });
-const Member = mongoose.model("member", memberSchema);
+const Users = mongoose.model("users", memberSchema);
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 app.post('/register', (req, res) => {
-    const tenet = new Member({
+    const tenet = new Users({
       firstName : req.body.name,
       email:  req.body.email,
       phoneNumber: "123456789",
