@@ -37,7 +37,7 @@ app.post('/register', (req, res) => {
               message= "user doesn't exist";
               console.log(message)
           }
-          res.json({message: message});
+          res.send({message: message});
     });
     const tenet = new Users({
       name : req.body.name,
@@ -48,7 +48,7 @@ app.post('/register', (req, res) => {
   const result = tenet.save();
   console.log(res)
   console.log(req)
-    res.send(existingUser);
+    // res.send(existingUser);
     // res.sendFile(path.join(`${__dirname}/favicon.ico`));
 });
 
