@@ -39,8 +39,8 @@ app.post('/register', (req, res) => {
     // res.sendFile(path.join(`${__dirname}/favicon.ico`));
 });
 
-app.get('/members', (req, res) => {
-    Member.find({}, "firstName lastName").then(members => {
+app.get('/users', (req, res) => {
+    Users.find({}, "name email phoneNumber password").then(members => {
         if (members !== null && members.length > 0) {
             res.write(JSON.stringify(members));
         } else {
