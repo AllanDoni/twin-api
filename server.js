@@ -13,8 +13,7 @@ mongoose.connect("mongodb://my_user:my_pwd@ec2-65-1-85-153.ap-south-1.compute.am
 
 const Schema = mongoose.Schema;
 const memberSchema = new Schema({
-    firstName: {type: String , default: ""},
-    lastName: {type: String , default: ""},
+    name: {type: String , default: ""},
     email: {type: String , default: ""},
     phoneNumber: {type: Number , default: ""},
     password: {type: String , default: ""}
@@ -27,7 +26,7 @@ app.get('/', (req, res) => {
 
 app.post('/register', (req, res) => {
     const tenet = new Users({
-      firstName : req.body.name,
+      name : req.body.name,
       email:  req.body.email,
       phoneNumber: "123456789",
       password: req.body.password
