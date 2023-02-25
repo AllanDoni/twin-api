@@ -24,7 +24,21 @@ app.get('/', (req, res) => {
 });
 
 app.post('/register', (req, res) => {
-    const existingUser = db.users.findOne({ phoneNumber: 758588 });
+    Users.findOne({phoneNumber: req.body.phoneNumber}, function(err, user){
+        if(err) {
+            console.log(err);
+          }
+          var message;
+          if(user) {
+            console.log(user)
+              message = "user exists";
+              console.log(message)
+          } else {
+              message= "user doesn't exist";
+              console.log(message)
+          }
+          res.json({message: message});
+    });
     const tenet = new Users({
       name : req.body.name,
       phoneNumber: req.body.phoneNumber,
