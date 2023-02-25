@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/register', (req, res) => {
-    const existingUser = db.users.findOne({ phoneNumber: req.body.phoneNumber });
+    const existingUser = db.users.findOne({ phoneNumber: 758588 });
     const tenet = new Users({
       name : req.body.name,
       phoneNumber: req.body.phoneNumber,
