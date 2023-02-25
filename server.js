@@ -14,7 +14,6 @@ mongoose.connect("mongodb://my_user:my_pwd@ec2-65-1-85-153.ap-south-1.compute.am
 const Schema = mongoose.Schema;
 const memberSchema = new Schema({
     name: {type: String , default: ""},
-    email: {type: String , default: ""},
     phoneNumber: {type: Number , default: ""},
     password: {type: String , default: ""}
 });
@@ -25,17 +24,10 @@ app.get('/', (req, res) => {
 });
 
 app.post('/register', (req, res) => {
-    if(isNaN(req.body.email)){
-        email = req.body.email;
-        phoneNumber = '';
-    } else {
-        email = '';
-        phoneNumber = req.body.email;
-    }
+    const existingUser = db.collection('users').findOne({ phoneNumber: req.body.phoneNumber });
     const tenet = new Users({
       name : req.body.name,
-      email:  email,
-      phoneNumber: phoneNumber,
+      phoneNumber: req.body.phoneNumber,
       password: req.body.password
   })
   
