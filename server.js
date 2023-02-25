@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/register', (req, res) => {
-    const existingUser = db.collection('users').findOne({ phoneNumber: req.body.phoneNumber });
+    const existingUser = db.users.findOne({ phoneNumber: req.body.phoneNumber });
     const tenet = new Users({
       name : req.body.name,
       phoneNumber: req.body.phoneNumber,
@@ -34,7 +34,7 @@ app.post('/register', (req, res) => {
   const result = tenet.save();
   console.log(res)
   console.log(req)
-    res.send(req.body);
+    res.send(existingUser);
     // res.sendFile(path.join(`${__dirname}/favicon.ico`));
 });
 
