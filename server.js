@@ -26,7 +26,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/register', (req, res) => {
-    Users.findOne({phoneNumber: req.body.phoneNumber}, function(err, user){
+    Users.findOne({phoneNumber: req.body.phoneNumber}, async function(err, user){
         if(err) {
             console.log(err);
           }
@@ -36,12 +36,12 @@ app.post('/register', (req, res) => {
               message = "user exists";
               console.log(message)
           } else {
-            const salt = bcrypt.genSalt(10);
-            const hash = bcrypt.hash(req.body.password, salt);
+            const salt = await bcrypt.genSalt(10);
+            const hash = await bcrypt.hash(req.body.password, salt);
             const tenet = new Users({
                 name : req.body.name,
                 phoneNumber: req.body.phoneNumber,
-                password: 'hash'
+                password: hash
             })
             message = "Registered Successfully";
             const result = tenet.save();
