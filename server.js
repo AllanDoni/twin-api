@@ -3,7 +3,7 @@ const path = require('path');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-// import bcrypt from 'bcryptjs';
+const bcrypt = require('bcryptjs');
 
 
 // fetches root files from client/build
