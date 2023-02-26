@@ -70,12 +70,12 @@ app.post('/login', (req, res) => {
             (valid) => {
               if (!valid) {
                 return res.status(401).json({
-                  error: new Error('Incorrect password!')
+                  error: 'Incorrect password!'
                 });
               }
               res.status(200).json({
                 userId: user._id,
-                token: 'token'
+                // token: 'token'
               });
             }
           ).catch(
