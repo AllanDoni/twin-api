@@ -63,7 +63,7 @@ app.post('/login', (req, res) => {
         (user) => {
           if (!user) {
             return res.status(401).json({
-              error: new Error('User not found!')
+              error: 'User not found!'
             });
           }
           bcrypt.compare(req.body.password, user.password).then(
