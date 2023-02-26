@@ -46,7 +46,7 @@ app.post('/register', (req, res) => {
             message = "Registered Successfully";
             const result = tenet.save();
           }
-          res.send({message: hash});
+          res.send({message: message});
     });
     
   console.log(res)
