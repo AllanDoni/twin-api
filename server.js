@@ -38,10 +38,11 @@ app.post('/register', (req, res) => {
           } else {
             const salt = bcrypt.genSalt(10);
             const hash = bcrypt.hash(req.body.password, salt);
+            con
             const tenet = new Users({
                 name : req.body.name,
                 phoneNumber: req.body.phoneNumber,
-                password: hash
+                password: 'hash'
             })
             message = "Registered Successfully";
             const result = tenet.save();
