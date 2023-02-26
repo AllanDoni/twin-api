@@ -3,7 +3,7 @@ const path = require('path');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 
 
 // fetches root files from client/build
@@ -36,7 +36,8 @@ app.post('/register', (req, res) => {
               message = "user exists";
               console.log(message)
           } else {
-            const hash = bcrypt.hashSync(req.body.password, 'my salt');
+            const salt = bcrypt.genSalt(10);
+            const hash = bcrypt.hash(req.body.password, salt);
             const tenet = new Users({
                 name : req.body.name,
                 phoneNumber: req.body.phoneNumber,
